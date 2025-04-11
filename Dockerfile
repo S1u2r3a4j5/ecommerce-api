@@ -1,5 +1,5 @@
 # Step 1: Use a PHP image with FPM
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
 # Step 2: Set the working directory in the container
 WORKDIR /var/www
