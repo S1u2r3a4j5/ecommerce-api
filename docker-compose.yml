@@ -9,6 +9,8 @@ services:
     container_name: ecommerce-app
     volumes:
       - .:/var/www
+      - ./storage:/var/www/storage  # Ensure storage is correctly mapped
+      - ./bootstrap/cache:/var/www/bootstrap/cache 
     ports:
       - "9000:9000"  # PHP-FPM
     networks:

@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "b8bbf445-8ff4-415d-b0b8-51cdd3db4a2e",
+		"name": "Ecomerce-api test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32410403",
+		"_collection_link": "https://suraj-thakur-1863.postman.co/workspace/9a6b5233-a084-4613-8d67-2ffd86da38eb/collection/32410403-b8bbf445-8ff4-415d-b0b8-51cdd3db4a2e?action=share&source=collection_link&creator=32410403"
+	},
+	"item": [
+		{
+			"name": "All products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Thakur Product\",\r\n  \"description\": \"This is a newly added product\",\r\n  \"price\": 99.99,\r\n  \"stock\": 50,\r\n  \"image_url\": \"http://example.com/newproduct.jpg\",\r\n  \"category_id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/28",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 28,\r\n    \"name\": \"suraj thakur\",\r\n    \"description\": \"This is a newly added product\",\r\n    \"price\": \"1100\",\r\n    \"stock\": 50,\r\n    \"image_url\": \"http://example.com/newproduct.jpg\",\r\n    \"category_id\": 2,\r\n    \"created_at\": \"2025-04-09T09:31:15.000000Z\",\r\n    \"updated_at\": \"2025-04-09T09:31:15.000000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/28",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/20",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"20"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
