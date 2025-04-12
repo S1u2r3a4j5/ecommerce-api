@@ -2,7 +2,7 @@
 
 The full API collection is available as a Postman collection.
 
-📥 [Download Ecommerce API Postman Collection](docs/ecommerce-api.postman_collection.json)
+📥 [Download Postman Collection](https://github.com/S1u2r3a4j5/ecommerce-api/blob/main/docs/Ecomerce-api%20test.postman_collection.json)
 
 You can import this file in Postman and test all endpoints like:
 - `GET /api/products`
