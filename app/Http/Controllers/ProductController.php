@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
 
 class ProductController extends Controller
 {
     // Get all products
     public function index()
     {
-        return response()->json(Product::all());
+        $products = Cache::remember("products", 60 ,function(){
+            return Product::all();
+        });
+
+        return response()->json( $products );
     }
 
     // Store a new product
@@ -33,6 +39,9 @@ class ProductController extends Controller
             'category_id' => $request->category_id, // Assuming category_id is passed
         ]);
 
+        //  Refresh cache
+        Cache::forget('products');
+
         return response()->json($product, 201);
     }
 
@@ -51,6 +60,9 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
+        //  Refresh cache
+        Cache::forget('products');
+
         return response()->json($product);
     }
 
@@ -60,6 +72,9 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
+        // 🔁 Refresh cache
+        Cache::forget('products');
+        
         return response()->json(['message' => 'Product deleted successfully']);
     }
 }

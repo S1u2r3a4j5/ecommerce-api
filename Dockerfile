@@ -12,18 +12,26 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
 # Step 4: Install Composer to manage PHP dependencies
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Step 5: Copy the application files into the container
+# Step 5: Install git (Required for some Laravel packages)
+RUN apt-get install -y git
+
+# Step 6: Copy the application files into the container
 COPY . .
 
-# Step 6: Install Laravel's PHP dependencies using Composer
+# Step 7: Install Laravel's PHP dependencies using Composer
 RUN composer install --no-scripts --no-autoloader
 
-# Step 7: Set up the .env file from the example
+# Step 8: Set up the .env file from the example
 RUN cp .env.example .env
 
-# Step 8: Expose the PHP-FPM port
+# Step 9: Set up storage and bootstrap cache directory permissions
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+# Step 10: Set up correct file permissions for Laravel
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+
+# Step 11: Expose the PHP-FPM port
 EXPOSE 9000
 
-# Step 9: Start PHP-FPM to serve the application
+# Step 12: Start PHP-FPM to serve the application
 CMD ["php-fpm"]
-
